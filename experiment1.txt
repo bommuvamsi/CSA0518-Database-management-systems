@@ -1,0 +1,132 @@
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| test               |
++--------------------+
+4 rows in set (0.02 sec)
+
+mysql> create database employee;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use employee;
+Database changed
+mysql> create table emp(emp_id int(20),name char(20));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc emp;
++--------+----------+------+-----+---------+-------+
+| Field  | Type     | Null | Key | Default | Extra |
++--------+----------+------+-----+---------+-------+
+| emp_id | int(20)  | YES  |     | NULL    |       |
+| name   | char(20) | YES  |     | NULL    |       |
++--------+----------+------+-----+---------+-------+
+2 rows in set (0.02 sec)
+
+mysql> create database student;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use student;
+Database changed
+mysql> create table stu(stu_name char(20),stu_regno int(20),stu_gender char(20),stu_dob int(20),stu_mob int(20));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc stu;
++------------+----------+------+-----+---------+-------+
+| Field      | Type     | Null | Key | Default | Extra |
++------------+----------+------+-----+---------+-------+
+| stu_name   | char(20) | YES  |     | NULL    |       |
+| stu_regno  | int(20)  | YES  |     | NULL    |       |
+| stu_gender | char(20) | YES  |     | NULL    |       |
+| stu_dob    | int(20)  | YES  |     | NULL    |       |
+| stu_mob    | int(20)  | YES  |     | NULL    |       |
++------------+----------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> create database faculty;
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  use faculty;
+Database changed
+mysql> create fac(fac_name char(20),fac_no int(20),fac_gender char(20) ,fac_dob int(20),fac_doj int(20),fac_no int(20));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'fac(fac_name char(20),fac_no int(20),fac_gender char(20) ,fac_dob int(20),fac_do' at line 1
+mysql> create table fac(fac_name char(20),fac_no int(20),fac_gender char(20) ,fac_dob int(20),fac_doj int(20),fac_no int(20));
+ERROR 1060 (42S21): Duplicate column name 'fac_no'
+mysql> create table fac(fac_name char(20),fac_no int(20),fac_gender char(20) ,fac_dob int(20),fac_doj int(20),fac_mno int(20));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc fac
+    ->
+    -> desc fac;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc fac' at line 3
+mysql> desc fac;
++------------+----------+------+-----+---------+-------+
+| Field      | Type     | Null | Key | Default | Extra |
++------------+----------+------+-----+---------+-------+
+| fac_name   | char(20) | YES  |     | NULL    |       |
+| fac_no     | int(20)  | YES  |     | NULL    |       |
+| fac_gender | char(20) | YES  |     | NULL    |       |
+| fac_dob    | int(20)  | YES  |     | NULL    |       |
+| fac_doj    | int(20)  | YES  |     | NULL    |       |
+| fac_mno    | int(20)  | YES  |     | NULL    |       |
++------------+----------+------+-----+---------+-------+
+6 rows in set (0.02 sec)
+
+mysql> create database course;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use course;
+Database changed
+mysql> create table cou(cou_no int(20),cou_desc char(20),cou_typ char(20),sem_no int(20),hall_no int(20),fac_no int(20));
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> desc cou;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| cou_no   | int(20)  | YES  |     | NULL    |       |
+| cou_desc | char(20) | YES  |     | NULL    |       |
+| cou_typ  | char(20) | YES  |     | NULL    |       |
+| sem_no   | int(20)  | YES  |     | NULL    |       |
+| hall_no  | int(20)  | YES  |     | NULL    |       |
+| fac_no   | int(20)  | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+6 rows in set (0.02 sec)
+
+mysql> fac MODIFY dept_no VARCHAR(4);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'fac MODIFY dept_no VARCHAR(4)' at line 1
+mysql> ALTER TABLE fac MODIFY dept_no VARCHAR(4);
+ERROR 1146 (42S02): Table 'course.fac' doesn't exist
+mysql> use faculty;
+Database changed
+mysql> ALTER TABLE faculty ADD(dept_no varchar(4));
+ERROR 1146 (42S02): Table 'faculty.faculty' doesn't exist
+mysql> ALTER TABLE faculty ADD(dept_no varchar(4));
+ERROR 1146 (42S02): Table 'faculty.faculty' doesn't exist
+mysql> desc faculty;
+ERROR 1146 (42S02): Table 'faculty.faculty' doesn't exist
+mysql> ALTER TABLE faculty ADD DeptNo VARCHAR(4);
+ERROR 1146 (42S02): Table 'faculty.faculty' doesn't exist
+mysql> ALTER TABLE fac ADD DeptNo VARCHAR(4);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe faculty;
+ERROR 1146 (42S02): Table 'faculty.faculty' doesn't exist
+mysql> describe fac;
++------------+------------+------+-----+---------+-------+
+| Field      | Type       | Null | Key | Default | Extra |
++------------+------------+------+-----+---------+-------+
+| fac_name   | char(20)   | YES  |     | NULL    |       |
+| fac_no     | int(20)    | YES  |     | NULL    |       |
+| fac_gender | char(20)   | YES  |     | NULL    |       |
+| fac_dob    | int(20)    | YES  |     | NULL    |       |
+| fac_doj    | int(20)    | YES  |     | NULL    |       |
+| fac_mno    | int(20)    | YES  |     | NULL    |       |
+| DeptNo     | varchar(4) | YES  |     | NULL    |       |
++------------+------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
