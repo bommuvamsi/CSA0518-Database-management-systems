@@ -1,0 +1,221 @@
+q-1
+
++------------+---------+--------+------------+----------+------------+
+| regno      | name    | gender | dob        | mobileno | city       |
++------------+---------+--------+------------+----------+------------+
+| 1921956453 | vamsi   | m      | 2000-07-23 | 53675676 | chennai    |
+| 1922256443 | john    | m      | 2002-02-13 | 53675686 | vellore    |
+| 1922256233 | kiran   | f      | 2000-07-13 |  5367546 | manali     |
+|  191711342 | nirupam | f      | 2000-07-03 |    53676 | nagpur     |
++------------+---------+--------+------------+----------+------------+
+
+answer:
+
+mysql> use john;
+Database changed
+mysql> select regno,name,dob from stdet;
++------------+---------+------------+
+| regno      | name    | dob        |
++------------+---------+------------+
+| 1921956453 | vamsi   | 2000-07-23 |
+| 1922256443 | john    | 2002-02-13 |
+| 1922256233 | kiran   | 2000-07-13 |
+|  191711342 | nirupam | 2000-07-03 |
++------------+---------+------------+
+4 rows in set (0.00 sec)
+
+
+q-2
+
++------------+---------+--------+------------+----------+------------+
+| regno      | name    | gender | dob        | mobileno | city       |
++------------+---------+--------+------------+----------+------------+
+| 1921956453 | vamsi   | m      | 2000-07-23 | 53675676 | chennai    |
+| 1922256443 | john    | m      | 2002-02-13 | 53675686 | vellore    |
+| 1922256233 | kiran   | f      | 2000-07-13 |  5367546 | manali     |
+|  191711342 | nirupam | f      | 2000-07-03 |    53676 | nagpur     |
++------------+---------+--------+------------+----------+------------+
+
+answer:
+
+mysql> select name from stdet where gender='f';
++---------+
+| name    |
++---------+
+| kiran   |
+| nirupam |
++---------+
+
+q-3
+
++-------+--------+------+
+| name  | gender | code |
++-------+--------+------+
+| john  | m      | C001 |
+| kiran | f      | C002 |
+| john  | m      | C004 |
+| abhi  | m      | C005 |
++-------+--------+------+
+
+answer:
+
+mysql> select*from s where code='C001',gender='m';
++------+--------+------+
+| name | gender | code |
++------+--------+------+
+| john | m      | C001 |
++------+--------+------+
+
+q-4
+
+.+------+------+------------+
+| name | age  | joindate   |
++------+------+------------+
+| john |   45 | 2014-10-12 |
+| joy  |   35 | 2014-12-12 |
+| john |   45 | 2014-10-24 |
+| toy  |   54 | 2016-10-12 |
++------+------+------------+
+4 rows in set (0.00 sec)
+
+answer:
+
+mysql> select*from f where joindate>2014-11-01;
++------+------+------------+
+| name | age  | joindate   |
++------+------+------------+
+| john |   45 | 2014-10-12 |
+| joy  |   35 | 2014-12-12 |
+| john |   45 | 2014-10-24 |
+|      |      |            |
++------+------+------------+
+
+q-5
+
++---------+------------+
+| cname   | hall       |
++---------+------------+
+| maths   | alloted    |
+| science | notalloted |
+| python  | notalloted |
+| c       | alloted    |
+| java    | notalloted |
++---------+------------+
+
+answer:
+mysql> select*from corse where hall='notalloted';
++---------+------------+
+| cname   | hall       |
++---------+------------+
+| science | notalloted |
+| python  | notalloted |
+| java    | notalloted |
++---------+------------+
+
+
+q-6
+
++---------+---------+-------+
+| name    | city    | class |
++---------+---------+-------+
+| samanth | pune    |     4 |
+| sushma  | chennai |     8 |
+| thanma  |vizag    |     1 |
+| mathuri | goa     |     3 |
++---------+---------+-------+
+
+answer:
+
+mysql> select*from city where name like '%ma';
++--------+---------+-------+
+| name   | city    | class |
++--------+---------+-------+
+| sushma | chennai |     8 |
+| thanma |vizag    |     1 |
++--------+---------+-------+
+
+q-7
+
++---------+---------+-------+
+| name    | city    | class |
++---------+---------+-------+
+| samanth | pune    |     4 |
+| sushma  | chennai |     8 |
+| thanma  |vizag    |     1 |
+| mathuri | goa     |     3 |
++---------+---------+-------+
+
+answer:
+
+mysql>  select*from city where name like '%ma';
++--------+---------+-------+
+| name   | city    | class |
++--------+---------+-------+
+| sushma | chennai |     8 |
+| thanma |vizag    |     1 |
++--------+---------+-------+
+
+q-8
+
+  +---------+---------+-------+
+| name    | city    | class |
++---------+---------+-------+
+| samanth | pune    |     4 |
+| sushma  | chennai |     8 |
+| thanma  |vizag    |     1 |
+| mathuri | goa     |     3 |
++---------+---------+-------+
+
+
+answer:
+
+mysql>  select*from city where city like '%sal';
++---------+--------+-------+
+| name    | city   | class |
++---------+--------+-------+
+| samanth | pune   |     4 |
+| thanma  |vizag   |     1 |
++---------+--------+-------+
+
+q-9
+
++---------+---------+-------+
+| name    | city    | class |
++---------+---------+-------+
+| samanth | pune    |     4 |
+| sushma  | chennai |     8 |
+| thanma  |vizag    |     1 |
+| mathuri | goa     |     3 |
++---------+---------+-------+
+
+answer:
+
+mysql>  select*from city where city like '______';
++---------+--------+-------+
+| name    | city   | class |
++---------+--------+-------+
+| samanth | pune   |     4 |
+| thanma  |vizag   |     1 |
++---------+--------+-------+
+
+q-10
+
++---------+---------+-------+
+| name    | city    | class |
++---------+---------+-------+
+| samanth | pune    |     4 |
+| sushma  | chennai |     8 |
+| thanma  |vizag    |     1 |
+| mathuri | goa     |     3 |
++---------+---------+-------+
+
+answer:
+
+mysql>  select*from city where name like '%th%';
++---------+--------+-------+
+| name    | city   | class |
++---------+--------+-------+
+| samanth | pune   |     4 |
+| thanma  |vizag   |     1 |
+| mathuri | goa    |     3 |
++---------+--------+-------+
