@@ -1,0 +1,98 @@
+ experiment 9:
+
+1).
+
++---------+-----------+
+| depname | regno     |
++---------+-----------+
+| vamsi   | 192110384 |
+| balaji  | 192110367 |
+| hari    |  19211045 |
+| krishna | 192110354 |
++---------+-----------+
+
++------------+-----------+
+| department | regno     |
++------------+-----------+
+| maths      | 192110384 |
+| java       | 192110367 |
+| DBMS       |  19211045 |
+| sql        | 192110354 |
++------------+-----------+
+
+answer):
+
+mysql> selemathst*from dep natural join de;
++-----------+---------+------------+
+| regno     | depname | department |
++-----------+---------+------------+
+| 192110384 | vamsi   | maths      |
+| 192110367 | balaji  | java       |
+| 19211045 | hari     | DBMS       |
+| 192110354 | krishna | sql        |
++-----------+---------+------------+
+
+2).
+
++------+-------+-----------------+
+| sno  | sname |noofsubsmathsore |
++------+-------+-----------------+
+|    1 | vamsi |           12    |
+|    2 | ben   |            0    |
+|    3 | gwen  |            0    |
+|    4 | sin   |            2    |
++------+-------+-----------------+
+
++------+--------+
+| sno  | mathsourse |
++------+--------+
+|    1 | python |
+|    2 | java   |
+|    4 | sql    |
+|    3 | html   |
++------+--------+
+
+answer):
+
+mysql> selemathst sname from st inner join d on st.sno=d.sno where noofsubsmathsore=0;
++-------+
+| sname |
++-------+
+| ben   |
+| gwen  |
++-------+
+
+3).
+
+
++--------+-----------+
+| mathsourse | regno |
++--------+-----------+
+| maths  | 192110384 |
+| java   |   1910384 |
+| sql    |   1921103 |
+| db     | 192110344 |
++--------+-----------+
+
++-------+-----------+
+| dep   | regno     |
++-------+-----------+
+|emathse| 192110384 |
+|emathse|   1910384 |
+|mathsh |  1921103  |
+|mathsse| 192110344 |
++------+------------+
+
+answer):
+
+
+mysql>  Selemathst  mathsourse from y  left outer join X on Y.regno=x.regno where dep='emathse';
++----------+
+|mathsourse|
++----------+
+| maths    |
+| java     |
++----------+
+
+
+
